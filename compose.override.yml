@@ -1,0 +1,24 @@
+# Lean resource limits for the Mac mini.
+#
+# Drop this file next to compose.yml as `compose.override.yml` —
+# `docker compose` merges it automatically. Caps total footprint at ~1.75 GB RAM.
+#
+# The app is meant to run on-demand (up when you open the dashboard, down after),
+# so these limits just keep it polite while it's up.
+
+services:
+  web:
+    mem_limit: 768m
+    cpus: "1.0"
+
+  worker:
+    mem_limit: 512m
+    cpus: "0.75"
+
+  db:
+    mem_limit: 384m
+    cpus: "0.5"
+
+  redis:
+    mem_limit: 96m
+    cpus: "0.25"
